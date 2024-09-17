@@ -3,6 +3,7 @@ package com.tc.booking.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.List;
 
 @Entity
@@ -31,7 +32,6 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    // Constructors
     public Customer() { super(); }
 
     public Customer(int id, String name, String phone, String email, Account account, List<Booking> bookings) {
