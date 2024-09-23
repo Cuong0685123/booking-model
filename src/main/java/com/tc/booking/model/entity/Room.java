@@ -1,5 +1,6 @@
 package com.tc.booking.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,8 +20,9 @@ public class Room {
     private double price;
     private boolean isAvailable;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id", nullable = false)
+    @JsonBackReference // Thêm annotation này
     private Hotel hotel;
 
     public Room() { super(); }
